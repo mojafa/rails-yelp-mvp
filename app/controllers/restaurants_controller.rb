@@ -1,8 +1,3 @@
-class ApplicationController < ActionController::Base
-end
-
-
-
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[ show edit update destroy chef ]
 
@@ -16,15 +11,16 @@ class RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
   end
+
   def edit
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant)
+      redirect_to @restaurant, notice: "Restaurant was successfully created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

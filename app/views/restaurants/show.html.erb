@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @restaurant %>
+
+<div>
+  <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
+  <%= link_to "Back to restaurants", restaurants_path %> |
+  <%# <%= link_to "Show Chef", chef_restaurant_path(@restaurant) %> %>
+
+  <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
+</div>
+
+<!-- app/views/restaurants/show.html.erb -->
+<li class="list-group-item">
+  <%= review.content %>
+  <%= link_to "Delete",
+    review_path(review),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+</li>
